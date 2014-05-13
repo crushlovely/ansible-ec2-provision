@@ -41,22 +41,22 @@ boto
 
 Role Variables
 -----------
-image
-instance_type
-ec2_access_key
-ec2_secret_key
-keypair
-instance_tag
-region
-group
-app_name
-server_env
+* image
+* instance_type
+* ec2_access_key
+* ec2_secret_key
+* keypair
+* instance_tag
+* region
+* group
+* app_name
+* server_env
 
 Dependencies
 -----------
 Note: Not dependencies but developed together.
-ec2_group
-ec2_ami
+* ec2_group
+* ec2_ami
 
 License
 -----------
