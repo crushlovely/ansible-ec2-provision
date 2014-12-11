@@ -1,63 +1,58 @@
-EC2 Provision
-========
+# Ansible Role For EC2 Provisioning
 
-Provions one ec2 instance and adds it to your cache so that the rest of your playbook can call it with app_name_server_env.  This role is 1 of 3 parts.  Although, the roles can be used individually they were developed to use together for the most effective ec2 provisioning.
+Provions ec2 instances. This role provisions instances inside of a EC2 VPC it has not been tested to provision instances inside of an EC2 classic network.
 
-######This ec2 role was broken off of the ansible example and tailored for organizational purposes.
+## Installation
 
-```
-- name: make one instance
-  local_action:
-    module: ec2
-    image: "{{ image }}"
-    instance_type: "{{ instance_type }}"
-    aws_access_key: "{{ ec2_access_key }}"
-    aws_secret_key: "{{ ec2_secret_key }}"
-    keypair: "{{ keypair }}"
-    instance_tags: "{{ instance_tag }}"
-    region: "{{ region }}"
-    group: "{{ group }}"
-    wait: true
-  register: ec2_info
-
-- debug: var=ec2_info
-- debug: var=item
-  with_items: ec2_info.instance_ids
-
-- add_host: hostname={{ item.public_ip }} groupname={{ app_name }}_{{ server_env }}
-  with_items: ec2_info.instances
-
-- name: wait for instances to listen on port:22
-  wait_for:
-    state: started
-    host: "{{ item.public_dns_name }}"
-    port: 22
-  with_items: ec2_info.instances
+``` bash
+$ ansible-galaxy install crushlovely.ec2_provision
 ```
 
-Requirements
------------
-boto
+## Variables
 
-Role Variables
------------
-* image
-* instance_type
-* ec2_access_key
-* ec2_secret_key
-* keypair
-* instance_tag
-* region
-* group
-* app_name
-* server_env
+You will want to fill all these in before running the role.
 
-Dependencies
------------
-Note: Not dependencies but developed together.
-* ec2_group
-* ec2_ami
+``` yaml
+ec2_access_key: ""
+ec2_secret_key: ""
+keypair: ""
+image: ""
+acct_vpc_id:
+region: ""
+group:
+instance_type:
+quantity: 1
+vpc_subnet:
+app_name:
+server_env:
+```
+You can also add a vars folder to your project folder and have your variables served by adding them to a file and calling it in your playbook.
 
-License
------------
+```yaml
+- hosts: localhost
+...
+  vars_files:
+    - vars/default_vars.yml
+...
+```
+
+
+## Usage
+
+Once this role is installed on your system, include it in the roles list of your playbook.
+
+``` yaml
+- hosts: localhost
+  connection: local
+  gather_facts: True
+  roles:
+    - { role: crushlovely.ec2_provision, zone: "", vpc_subnet: }
+```
+
+## Dependencies
+
+Although, this role is not dependant on ec2_group it is highly recommended that the ec2_group role is also added to your playbook to ensure ec2 tags match. Boto is required to use this role.
+
+## License
+
 MIT

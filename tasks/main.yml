@@ -7,10 +7,12 @@
     aws_access_key: "{{ ec2_access_key }}"
     aws_secret_key: "{{ ec2_secret_key }}"
     keypair: "{{ keypair }}"
+    count: "{{ quantity }}"
     instance_tags: "{{ instance_tag }}"
     region: "{{ region }}"
     group: "{{ group }}"
     wait: true
+    vpc_subnet_id: "{{ vpc_subnet }}"
   register: ec2_info
 
 - debug: var=ec2_info
