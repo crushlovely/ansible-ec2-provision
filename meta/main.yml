@@ -10,5 +10,5 @@ galaxy_info:
       versions:
         - precise
   categories:
-    - Cloud
+    - cloud
 dependencies: []
