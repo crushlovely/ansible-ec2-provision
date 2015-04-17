@@ -1,11 +1,13 @@
 # Ansible Role For EC2 Provisioning
 
+[![Current Version](http://img.shields.io/github/release/crushlovely/ansible-ec2-provision.svg?style=flat)](https://crushlovely/ansible-ec2-provision/releases)
+
 Provions ec2 instances. This role provisions instances inside of a EC2 VPC it has not been tested to provision instances inside of an EC2 classic network.
 
 ## Installation
 
 ``` bash
-$ ansible-galaxy install crushlovely.ec2_provision
+$ ansible-galaxy install crushlovely.ec2_provision,v1.0.0
 ```
 
 ## Variables
@@ -13,18 +15,19 @@ $ ansible-galaxy install crushlovely.ec2_provision
 You will want to fill all these in before running the role.
 
 ``` yaml
-ec2_access_key: ""
-ec2_secret_key: ""
-keypair: ""
-image: ""
-acct_vpc_id:
-region: ""
-group:
-instance_type:
-quantity: 1
-vpc_subnet:
-app_name:
-server_env:
+aws:
+  ec2_access_key: "Amazon IAM access key"
+  ec2_secret_key: "Aamazon secret key"
+  keypair: "Amazon security key pair"
+  image: "Image to be provisioned"
+  acct_vpc_id: "EC2 vpc id"
+  region: "us-east-1"
+  group: "{{ app_name }}-{{ server_env }}"
+  instance_type: "m3.medium"
+  quantity: "1"
+  vpc_subnet: "EC2 VPC regional subnet"
+app_name: test
+server_env: qa
 ```
 You can also add a vars folder to your project folder and have your variables served by adding them to a file and calling it in your playbook.
 

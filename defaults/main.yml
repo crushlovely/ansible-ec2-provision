@@ -1,0 +1,16 @@
+---
+aws:
+  access_key: ""
+  secret_key: ""
+  acct_vpc_id: ""
+  group: "{{ app_name }}-{{ server_env }}"
+  instance_type: "m3.medium"
+  quantity: ""
+  provision:
+    - region: "us-east-1"
+      vpc_subnet: ""
+      image: ""
+      zone: "us-east-1d"
+      keypair: ""
+app_name: test
+server_env: qa
