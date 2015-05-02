@@ -6,11 +6,11 @@ aws:
   group: "{{ app_name }}-{{ server_env }}"
   instance_type: "m3.medium"
   quantity: ""
-  provision:
-    - region: "us-east-1"
-      vpc_subnet: ""
-      image: ""
-      zone: "us-east-1d"
-      keypair: ""
+  region: "us-east-1"
+  vpc_subnet: ""
+  image: ""
+  zone: "us-east-1d"
+  keypair: ""
+  instance_tag: '{"Name":"{{ app_name }}_{{ server_env }}_","Group1":"{{ app_name }}_{{ server_env }}","Group2":"{{ app_name }}_{{ server_env }}_"}'
 app_name: test
 server_env: qa

@@ -49,7 +49,7 @@ Once this role is installed on your system, include it in the roles list of your
   connection: local
   gather_facts: True
   roles:
-    - { role: crushlovely.ec2_provision, zone: "", vpc_subnet: }
+    - { role: crushlovely.ec2_provision, zone: "", vpc_subnet: "" }
 ```
 
 ## Dependencies
