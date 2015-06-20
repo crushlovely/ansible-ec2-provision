@@ -2,16 +2,16 @@
 - name: make one instance
   local_action:
     module: ec2
-    image: "{{ aws.image }}"
-    instance_type: "{{ aws.instance_type }}"
-    aws_access_key: "{{ aws.access_key }}"
-    aws_secret_key: "{{ aws.secret_key }}"
-    keypair: "{{ aws.keypair }}"
-    count: "{{ aws.quantity }}"
-    instance_tags: "{{ aws.instance_tag }}"
-    region: "{{ aws.region }}"
-    group: "{{ aws.group }}"
-    vpc_subnet_id: "{{ aws.vpc_subnet }}"
+    image: "{{ aws_image }}"
+    instance_type: "{{ aws_instance_type }}"
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    keypair: "{{ aws_keypair }}"
+    count: "{{ aws_quantity }}"
+    instance_tags: "{{ aws_instance_tag }}"
+    region: "{{ aws_region }}"
+    group: "{{ aws_group }}"
+    vpc_subnet_id: "{{ aws_vpc_subnet }}"
     wait: true
   register: ec2_info
 
