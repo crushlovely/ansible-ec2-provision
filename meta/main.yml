@@ -4,7 +4,7 @@ galaxy_info:
   company: Crush & Lovely
   description: Provision EC2 instance
   license: MIT
-  min_ansible_version: 1.6
+  min_ansible_version: 1.9
   platforms:
     - name: Ubuntu
       versions:
@@ -12,4 +12,4 @@ galaxy_info:
   categories:
     - cloud
 dependencies: []
-version: 2.0.0
+version: 4.0.0

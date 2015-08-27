@@ -1,16 +1,14 @@
 ---
-aws:
-  access_key: ""
-  secret_key: ""
-  acct_vpc_id: ""
-  group: "{{ app_name }}-{{ server_env }}"
-  instance_type: "m3.medium"
-  quantity: ""
-  region: "us-east-1"
-  vpc_subnet: ""
-  image: ""
-  zone: "us-east-1d"
-  keypair: ""
-  instance_tag: '{"Name":"{{ app_name }}_{{ server_env }}_","Group1":"{{ app_name }}_{{ server_env }}","Group2":"{{ app_name }}_{{ server_env }}_"}'
+aws_access_key: ""
+aws_secret_key: ""
+aws_acct_vpc_id: ""
+aws_group: "{{ app_name }}-{{ server_env }}"
+aws_instance_type: ""
+aws_quantity: ""
+aws_region: "us-east-1"
+aws_vpc_subnet: ""
+aws_image: ""
+aws_keypair: ""
+aws_instance_tag: '{"Name":"{{ app_name }}_{{ server_env }}_","Group1":"{{ app_name }}_{{ server_env }}","Group2":"{{ app_name }}_{{ server_env }}_"}'
 app_name: test
 server_env: qa
